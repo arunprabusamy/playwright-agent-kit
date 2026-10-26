@@ -7,7 +7,7 @@
   "scripts": {
     "test": "playwright test",
     "build": "tsc",
-    "prepublishOnly": "npm run buld"
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "playwright",
