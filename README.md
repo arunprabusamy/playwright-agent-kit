@@ -11,7 +11,7 @@ npm test
 
 ## Structure
 
-- `src/` — Page Object Model base classes
+- `pages/` — Page Object Model base classes
 - `.claude/` — Claude Code skills and agents
 
 ## Contributing
