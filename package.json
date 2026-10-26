@@ -1,13 +1,9 @@
 {
   "name": "playwright-agent-kit",
   "version": "0.0.1",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "test": "playwright test",
-    "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "test": "playwright test"
   },
   "keywords": [
     "playwright",
@@ -21,10 +17,7 @@
     "url": "https://github.com/arunprabusamy/playwright-agent-kit"
   },
   "author": "arunprabu nallasamy",
-  "description": "Agent-first Playwright POM framework — fork this as a base for your own automation.",
-  "files": [
-    "dist"
-  ],
+  "description": "Agent-first Playwright POM framework. Use this as a GitHub template for your own automation.",
   "devDependencies": {
     "@playwright/test": "^1.64.1",
     "typescript": "^7.0.2"
