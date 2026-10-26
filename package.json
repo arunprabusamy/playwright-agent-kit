@@ -18,7 +18,7 @@
     "url": "https://github.com/arunprabusamy/playwright-agent-kit"
   },
   "author": "arunprabu nallasamy",
-  "description": "Agent-first Playwright POM framework. Use this as a GitHub template for your own automation.",
+  "description": "Agent-first Playwright POM framework. Fork this repo for your own automation.",
   "devDependencies": {
     "@playwright/test": "^1.64.1",
     "@types/node": "^26.6.5",
