@@ -9,6 +9,11 @@ export const test = base.extend<pageFixtures>({
   formsPage: async ({ page }, use) => {
     await page.goto("http://localhost:3000/forms");
     use(page);
+  },
+
+  tablePage: async ({ page }, use) => {
+    await page.goto("http://localhost:3000/table");
+    use(page);
   }
 });
 
