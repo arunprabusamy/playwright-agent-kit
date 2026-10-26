@@ -1,14 +1,14 @@
 import { test as base, Page } from "@playwright/test";
 
 type pageFixtures = {
-  homePage: String;
   formsPage: Page;
   tablePage: Page;
 };
 
 export const test = base.extend<pageFixtures>({
-  homePage: async ({}, use) => {
-    use("hello World");
+  formsPage: async ({ page }, use) => {
+    await page.goto("http://localhost:3000/forms");
+    use(page);
   }
 });
 
