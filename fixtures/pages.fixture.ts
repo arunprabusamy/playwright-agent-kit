@@ -1,18 +1,15 @@
 import { test as base, Page } from "@playwright/test";
 
 type pageFixtures = {
-  formsPage: Page;
-  tablePage: Page;
+  homePage: Page;
 };
 
-export const test = base.extend<pageFixtures>({
-  formsPage: async ({ page }, use) => {
-    await page.goto("http://localhost:3000/forms");
-    use(page);
-  },
+const baseUrl = process.env.URL;
+if (!baseUrl) throw new Error("URL is required");
 
-  tablePage: async ({ page }, use) => {
-    await page.goto("http://localhost:3000/table");
+export const test = base.extend<pageFixtures>({
+  homePage: async ({ page }, use) => {
+    await page.goto(baseUrl);
     use(page);
   }
 });
