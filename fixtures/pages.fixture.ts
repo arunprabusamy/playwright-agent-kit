@@ -7,7 +7,7 @@ type pageFixtures = {
 export const test = base.extend<pageFixtures>({
   homePage: async ({ page }, use) => {
     await page.goto("/");
-    use(page);
+    await use(page);
   }
 });
 
