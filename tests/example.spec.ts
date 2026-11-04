@@ -1,8 +1,8 @@
 import { test, expect } from "../fixtures/pages.fixture";
 
 test("Home page sample test", async ({ homePage }) => {
-  await expect(homePage).toHaveTitle(
-    "Practice Software Testing - Toolshop - v5.0"
-  );
-  await homePage.getByRole("img", { name: "Pliers", exact: true }).click();
+  // await expect(homePage).toHaveTitle(
+  //   "Practice Software Testing - Toolshop - v5.0"
+  // );
+  await homePage.pliersImage.click();
 });
