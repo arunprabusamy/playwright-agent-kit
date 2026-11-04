@@ -1,6 +1,6 @@
 import { Locator, Page, expect } from "@playwright/test";
 
-export class FormsPage {
+export class HomePage {
   constructor(private page: Page) {}
 
   get fullNameInput(): Locator {
