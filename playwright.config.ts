@@ -2,7 +2,7 @@ import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
 import path from "path";
 
-dotenv.config({ path: path.resolve(__dirname, "env", ".env.dev") });
+dotenv.config({ path: path.resolve(__dirname, "env", ".env.example") });
 const baseUrl = process.env.BASE_URL;
 if (!baseUrl) throw new Error("BASE_URL is required");
 
