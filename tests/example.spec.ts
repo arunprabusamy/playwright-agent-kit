@@ -9,4 +9,5 @@ test("Home page sample test", async ({ homePage }) => {
 
 test("Contact page sample test", async ({ contactPage }) => {
   await contactPage.goToContactPage();
+  await expect(contactPage.sendButton).toBeVisible();
 });

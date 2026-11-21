@@ -15,6 +15,10 @@ export class ContactPage {
     return this.page.getByRole("heading", { name: "Contact", level: 3 });
   }
 
+  get sendButton(): Locator {
+    return this.page.getByRole("button", { name: "Send" });
+  }
+
   async goToContactPage(): Promise<void> {
     await this.contactLink.click();
     await expect(this.contactHeading).toBeVisible();
