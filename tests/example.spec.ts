@@ -1,4 +1,4 @@
-import { test, expect } from "../fixtures/pages.fixture";
+import { test, expect } from "@fixtures/pages.fixture";
 
 test("Home page sample test", async ({ homePage }) => {
   await expect(homePage.page).toHaveTitle(
