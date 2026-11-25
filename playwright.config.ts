@@ -1,12 +1,11 @@
 import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
 import path from "path";
+import { UI_AUTH_FILE } from "@constants/auth.constants";
 
 dotenv.config({ path: path.resolve(__dirname, "env", ".env.dev") });
 const baseUrl = process.env.BASE_URL;
 if (!baseUrl) throw new Error("BASE_URL is required");
-
-const authFile = "playwright/.auth/user.json";
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -38,18 +37,20 @@ export default defineConfig({
 
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"], storageState: authFile },
+      use: { ...devices["Desktop Chrome"], storageState: UI_AUTH_FILE },
       dependencies: ["setup"],
     },
 
     {
       name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
+      use: { ...devices["Desktop Firefox"], storageState: UI_AUTH_FILE },
+      dependencies: ["setup"],
     },
 
     {
       name: "webkit",
-      use: { ...devices["Desktop Safari"] },
+      use: { ...devices["Desktop Safari"], storageState: UI_AUTH_FILE },
+      dependencies: ["setup"],
     },
 
     /* Test against mobile viewports. */
