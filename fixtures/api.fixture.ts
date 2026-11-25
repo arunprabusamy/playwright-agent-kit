@@ -8,6 +8,7 @@ export type ApiTestOptions = {
 
 type ApiFixtures = {
   authRequest: APIRequestContext;
+  unauthRequest: APIRequestContext;
 };
 
 export const test = base.extend<ApiTestOptions & ApiFixtures>({
@@ -39,6 +40,18 @@ export const test = base.extend<ApiTestOptions & ApiFixtures>({
       },
     });
 
+    await use(context);
+    await context.dispose();
+  },
+
+  unauthRequest: async ({ playwright, apiBaseURL }, use) => {
+    const context = await playwright.request.newContext({
+      baseURL: apiBaseURL,
+      extraHTTPHeaders: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
     await use(context);
     await context.dispose();
   },

@@ -43,12 +43,14 @@ export default defineConfig({
 
     {
       name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
+      use: { ...devices["Desktop Firefox"], storageState: UI_AUTH_FILE },
+      dependencies: ["setup"],
     },
 
     {
       name: "webkit",
-      use: { ...devices["Desktop Safari"] },
+      use: { ...devices["Desktop Safari"], storageState: UI_AUTH_FILE },
+      dependencies: ["setup"],
     },
 
     /* Test against mobile viewports. */

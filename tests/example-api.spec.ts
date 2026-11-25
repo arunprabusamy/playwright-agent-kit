@@ -1,5 +1,4 @@
-import { test } from "@fixtures/api.fixture";
-import { expect } from "@playwright/test";
+import { test, expect } from "@fixtures/index";
 
 test("API sample test", async ({ authRequest }) => {
   const response = await authRequest.get("/users/me");
@@ -7,10 +6,8 @@ test("API sample test", async ({ authRequest }) => {
   console.log(await response.json());
 });
 
-test("API sample test without Authentication", async ({ request }) => {
-  const response = await request.get(
-    "https://api.practicesoftwaretesting.com/users/me",
-  );
-  expect(response).toBeOK();
+test("API sample test without Authentication", async ({ unauthRequest }) => {
+  const response = await unauthRequest.get("/users/me");
+  expect(response.status()).toBe(401);
   console.log(await response.json());
 });
