@@ -14,6 +14,11 @@ export class HomePage {
     return this.page.getByRole("link", { name: "Practice Software Testing -" });
   }
 
+  async goto(): Promise<void> {
+    await this.page.goto("/");
+    await expect(this.page).toHaveTitle(HomePage.TITLE_PATTERN);
+  }
+
   async goToHomePage(): Promise<void> {
     await this.homePageLink.click();
     await expect(this.page).toHaveTitle(HomePage.TITLE_PATTERN);
