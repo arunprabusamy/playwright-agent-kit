@@ -499,7 +499,16 @@ CONTENT_RULE_TOOLS = frozenset({
 
 PATCH_TOOLS = frozenset({"apply_patch", "patch_file"})
 
-SHELL_TOOLS = frozenset({"bash", "shell", "run_command", "execute_command", "terminal"})
+SHELL_TOOLS = frozenset({
+    "bash",
+    "shell",
+    "powershell",
+    "pwsh",
+    "cmd",
+    "run_command",
+    "execute_command",
+    "terminal",
+})
 
 # Matches protected agent governance, rules/hooks, and agent/CLI state inside shell commands.
 # COUPLING INVARIANT: Keep protected entries in sync with PROTECTED_PATH.
@@ -622,13 +631,16 @@ def hook() -> int:
     if name_lower in READ_ONLY_TOOLS:
         return 0
 
-    if name_lower in SHELL_TOOLS:
-        command = (
-            tool_input.get("command")
-            or tool_input.get("CommandLine")
-            or tool_input.get("cmd")
-            or ""
-        )
+    command = (
+        tool_input.get("command")
+        or tool_input.get("CommandLine")
+        or tool_input.get("cmd")
+        or ""
+    )
+
+    # Any tool carrying a command string is treated as a shell, so an unlisted
+    # shell tool name cannot bypass the protected-path check.
+    if name_lower in SHELL_TOOLS or (name_lower not in CONTENT_RULE_TOOLS and command):
         if isinstance(command, str) and SHELL_PROTECTED_TARGET.search(command) and SHELL_MUTATION_OP.search(command):
             print(
                 "BLOCKED by Guardrail enforcement hook (shell command):\n"
