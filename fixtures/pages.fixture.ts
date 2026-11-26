@@ -15,11 +15,11 @@ export const test = base.extend<PageFixtures>({
   },
 
   contactPage: async ({ page }, use) => {
-    await page.goto("/");
+    await page.goto("/contact");
     await use(new ContactPage(page));
   },
 
-  //  Isolated browser page with no cookies, localStorage, or session tokens
+  // Overrides project-level storageState so tests get an unauthenticated browser context.
   freshPage: async ({ browser }, use) => {
     const context = await browser.newContext({ storageState: undefined });
     const page = await context.newPage();
