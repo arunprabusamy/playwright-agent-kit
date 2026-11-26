@@ -11,12 +11,14 @@ type ApiFixtures = {
   unauthRequest: APIRequestContext;
 };
 
+const apiBaseURL = process.env.API_BASE_URL;
+if (!apiBaseURL) {
+  throw new Error("API_BASE_URL is required.");
+}
+
 export const test = base.extend<ApiTestOptions & ApiFixtures>({
-  // 1. Register apiBaseURL as a config-controllable option with a fallback
-  apiBaseURL: [
-    process.env.API_BASE_URL || "https://api.practicesoftwaretesting.com",
-    { option: true },
-  ],
+  // Register apiBaseURL as a config-controllable option from the environment.
+  apiBaseURL: [apiBaseURL, { option: true }],
 
   // 2. Authenticated request fixture injecting bearer token from storage
   authRequest: async ({ playwright, apiBaseURL }, use) => {
