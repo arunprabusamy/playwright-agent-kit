@@ -9,7 +9,7 @@ const apiBaseURL = process.env.API_BASE_URL || "";
 
 if (!username || !password || !apiBaseURL) {
   throw new Error(
-    "USER_NAME, PASSWORD and apiBaseURL environment variables are required.",
+    "USER_NAME, PASSWORD and API_BASE_URL environment variables are required.",
   );
 }
 

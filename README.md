@@ -11,8 +11,14 @@ npm test
 
 ## Structure
 
-- `pages/` — Page Object Model base classes
-- `.claude/` — Claude Code skills and agents
+- `pages/` — Page Object Model classes
+- `tests/` — Playwright test specs and auth setup
+- `fixtures/` — Custom Playwright test fixtures (`pages`, `api`)
+- `constants/` — Shared constants
+- `env/` — Environment configuration files (e.g., `.env.dev`)
+- `.agent/` — Agent rules and guardrail hooks
+- `AGENTS.md` — Agent instructions and rule index
+- `playwright.config.ts` — Playwright configuration
 
 ## Contributing
 
