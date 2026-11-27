@@ -20,12 +20,12 @@ export const test = base.extend<ApiTestOptions & ApiFixtures>({
   // Register apiBaseURL as a config-controllable option from the environment.
   apiBaseURL: [apiBaseURL, { option: true }],
 
-  // 2. Authenticated request fixture injecting bearer token from storage
+  // Authenticated request fixture injecting bearer token from storage
   authRequest: async ({ playwright, apiBaseURL }, use) => {
     if (!fs.existsSync(API_AUTH_FILE)) {
       throw new Error(
-        `API auth state not found at ${API_AUTH_FILE}. Ensure   
-            tests/auth.setup.ts has run.`,
+        `API auth state not found at ${API_AUTH_FILE}. ` +
+          `Ensure tests/auth.setup.ts has run.`,
       );
     }
 
