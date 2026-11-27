@@ -15,15 +15,10 @@
   "permissions": {
     "deny": [
       "Edit(.agent/**)",
-      "Write(.agent/**)",
       "Edit(.claude/**)",
-      "Write(.claude/**)",
       "Edit(.husky/**)",
-      "Write(.husky/**)",
       "Edit(eslint.config.mjs)",
-      "Write(eslint.config.mjs)",
-      "Edit(lint-staged.config.mjs)",
-      "Write(lint-staged.config.mjs)"
+      "Edit(lint-staged.config.mjs)"
     ]
   }
 }
