@@ -11,21 +11,16 @@ type ApiFixtures = {
   unauthRequest: APIRequestContext;
 };
 
-const apiBaseURL = process.env.API_BASE_URL;
-if (!apiBaseURL) {
-  throw new Error("API_BASE_URL is required.");
-}
-
 export const test = base.extend<ApiTestOptions & ApiFixtures>({
-  // Register apiBaseURL as a config-controllable option from the environment.
-  apiBaseURL: [apiBaseURL, { option: true }],
+  // Set in playwright.config.ts (or overridden per-file with test.use).
+  apiBaseURL: ["", { option: true }],
 
-  // 2. Authenticated request fixture injecting bearer token from storage
+  // Authenticated request fixture injecting bearer token from storage
   authRequest: async ({ playwright, apiBaseURL }, use) => {
     if (!fs.existsSync(API_AUTH_FILE)) {
       throw new Error(
-        `API auth state not found at ${API_AUTH_FILE}. Ensure   
-            tests/auth.setup.ts has run.`,
+        `API auth state not found at ${API_AUTH_FILE}. ` +
+          `Ensure tests/auth.setup.ts has run.`,
       );
     }
 

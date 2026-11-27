@@ -10,13 +10,15 @@ type PageFixtures = {
 
 export const test = base.extend<PageFixtures>({
   homePage: async ({ page }, use) => {
-    await page.goto("/");
-    await use(new HomePage(page));
+    const homePage = new HomePage(page);
+    await homePage.goto();
+    await use(homePage);
   },
 
   contactPage: async ({ page }, use) => {
-    await page.goto("/contact");
-    await use(new ContactPage(page));
+    const contactPage = new ContactPage(page);
+    await contactPage.goto();
+    await use(contactPage);
   },
 
   // Overrides project-level storageState so tests get an unauthenticated browser context.

@@ -3,9 +3,9 @@ import path from "path";
 import fs from "fs";
 import { UI_AUTH_FILE, API_AUTH_FILE } from "@constants/auth.constants";
 
-const username = process.env.USER_NAME || "";
-const password = process.env.PASSWORD || "";
-const apiBaseURL = process.env.API_BASE_URL || "";
+const username = process.env.USER_NAME;
+const password = process.env.PASSWORD;
+const apiBaseURL = process.env.API_BASE_URL;
 
 if (!username || !password || !apiBaseURL) {
   throw new Error(

@@ -2,15 +2,19 @@ import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
 import path from "path";
 import { UI_AUTH_FILE } from "@constants/auth.constants";
+import type { ApiTestOptions } from "@fixtures/api.fixture";
 
 dotenv.config({ path: path.resolve(__dirname, "env", ".env.dev") });
 const baseUrl = process.env.BASE_URL;
 if (!baseUrl) throw new Error("BASE_URL is required");
 
+const apiBaseUrl = process.env.API_BASE_URL;
+if (!apiBaseUrl) throw new Error("API_BASE_URL is required");
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+export default defineConfig<ApiTestOptions>({
   testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -26,6 +30,8 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: baseUrl,
+    /* Base URL for API request fixtures. */
+    apiBaseURL: apiBaseUrl,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",

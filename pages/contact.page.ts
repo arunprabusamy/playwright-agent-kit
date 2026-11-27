@@ -19,6 +19,11 @@ export class ContactPage {
     return this.page.getByRole("button", { name: "Send" });
   }
 
+  async goto(): Promise<void> {
+    await this.page.goto("/contact");
+    await expect(this.contactHeading).toBeVisible();
+  }
+
   async goToContactPage(): Promise<void> {
     await this.contactLink.click();
     await expect(this.contactHeading).toBeVisible();
