@@ -26,3 +26,8 @@ Automated checks (ESLint rules, a pre-commit gate and a Claude Code hook) enforc
 - Prefer a clearer name or test.step() over a comment.
 - Fix or delete comments that are wrong or outdated.
 - No commented-out code.
+
+## Tooling
+
+- Use the project's `@playwright/cli` (`npx playwright-cli`) for inspecting live pages and capturing snapshots. Try the CLI first.
+- Use Playwright MCP only if the CLI cannot do the job or fails to run. When you do, add a comment explaining why MCP was needed.
