@@ -6,5 +6,10 @@ node_modules
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+/.playwright-mcp
+/.playwright-cli
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
+
 .env.*
 !.env.dev
