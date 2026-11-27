@@ -1,15 +1,15 @@
 node_modules
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-
 # Playwright
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+/.playwright-mcp
+/.playwright-cli
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
+
 .env.*
 !.env.dev

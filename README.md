@@ -4,10 +4,14 @@ Agent-first Playwright POM framework. Fork this repo to start your own test auto
 
 ## Getting started
 
+Requires Node.js 22.22.1 or newer.
+
 ```bash
 npm run setup
 npm test
 ```
+
+Run `npm run lint` to check the guardrail rules (fixture imports, no hard waits, no manual page instantiation, no hardcoded URLs). The same rules run on commit and in the Claude Code hook (`.agent/hooks/guardrails.mjs`), which only needs Node. See [.agent/hooks/README.md](./.agent/hooks/README.md) for how to turn individual checks off.
 
 ## Structure
 

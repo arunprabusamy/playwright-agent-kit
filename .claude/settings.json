@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.agent/hooks/guardrails.mjs\""
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "deny": [
+      "Edit(.agent/**)",
+      "Edit(.claude/**)",
+      "Edit(.husky/**)",
+      "Edit(eslint.config.mjs)",
+      "Edit(lint-staged.config.mjs)"
+    ]
+  }
+}
